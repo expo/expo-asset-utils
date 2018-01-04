@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "simple",
+    "description": "expo-asset-utils simple example",
+    "slug": "expo-asset-utils-simple",
+    "sdkVersion": "24.0.0",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "primaryColor": "#cccccc",
+    "icon": "./assets/icons/app-icon.png",
+    "loading": {
+      "icon": "./assets/icons/app-icon.png",
+      "hideExponentText": false
+    },
+    "ios": {
+      "supportsTablet": true
+    }
+  }
+}

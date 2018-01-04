@@ -1,0 +1,21 @@
+{
+  "name": "expo-asset-utils",
+  "version": "0.0.0",
+  "description": "Utilities for converting files into Expo Assets",
+  "files": ["lib"],
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/expo/expo-asset-utils"
+  },
+  "keywords": ["expo", "asset", "utils", "react-native", "react"],
+  "author": "Evan Bacon",
+  "license": "MIT",
+  "peerDependencies": {
+    "expo": "^24.0.0",
+    "react-native": "*"
+  }
+}
