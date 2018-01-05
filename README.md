@@ -30,7 +30,7 @@ import AssetUtils from 'expo-asset-utils';
 
 ##### resolveAsync
 
-Given a reference to some asset, this will return a promise that resolves to an Expo.Asset.
+Given a reference to some asset, this will return a promise that resolves to an Expo.Asset that has been cached.
 
 * Expo asset: `Expo.Asset.fromModule(require('./image.png'))`
 * static resource: `require('./image.png')`
@@ -42,6 +42,23 @@ Given a reference to some asset, this will return a promise that resolves to an 
 | Property      |                       Type                        | Description                                      |
 | ------------- | :-----------------------------------------------: | ------------------------------------------------ |
 | fileReference | `Expo.Asset`, `number`, `string`, `{uri: string}` | This will resolve into a downloaded `Expo.Asset` |
+
+##### uriAsync
+
+Given a reference to some asset, this will return a promise that resolves to a local uri.
+
+| Property      |                       Type                        | Description                                      |
+| ------------- | :-----------------------------------------------: | ------------------------------------------------ |
+| fileReference | `Expo.Asset`, `number`, `string`, `{uri: string}` | This will resolve into a downloaded `Expo.Asset` |
+
+##### copyAssetToSameDirectoryWithNewNameAsync
+
+Given a reference to some asset, and a name (ex: 'file.png') this will copy that asset to the same directory with the provided name. This is used for libraries that parse files by extracting the relative path and appending some arbitrary file name to that path.
+
+| Property      |                       Type                        | Description                                      |
+| ------------- | :-----------------------------------------------: | ------------------------------------------------ |
+| fileReference | `Expo.Asset`, `number`, `string`, `{uri: string}` | This will resolve into a downloaded `Expo.Asset` |
+| name          |                     `string`                      | The file will be copied with this name           |
 
 ##### fromUriAsync
 
