@@ -28,7 +28,7 @@ import AssetUtils from 'expo-asset-utils';
 
 ## Functions
 
-##### resolveAsync
+#### resolveAsync
 
 Given a reference to some asset, this will return a promise that resolves to an Expo.Asset that has been cached.
 
@@ -43,7 +43,7 @@ Given a reference to some asset, this will return a promise that resolves to an 
 | ------------- | :-----------------------------------------------: | ------------------------------------------------ |
 | fileReference | `Expo.Asset`, `number`, `string`, `{uri: string}` | This will resolve into a downloaded `Expo.Asset` |
 
-##### uriAsync
+#### uriAsync
 
 Given a reference to some asset, this will return a promise that resolves to a local uri.
 
@@ -51,7 +51,7 @@ Given a reference to some asset, this will return a promise that resolves to a l
 | ------------- | :-----------------------------------------------: | ------------------------------------------------ |
 | fileReference | `Expo.Asset`, `number`, `string`, `{uri: string}` | This will resolve into a downloaded `Expo.Asset` |
 
-##### copyAssetToSameDirectoryWithNewNameAsync
+#### copyAssetToSameDirectoryWithNewNameAsync
 
 Given a reference to some asset, and a name (ex: 'file.png') this will copy that asset to the same directory with the provided name. This is used for libraries that parse files by extracting the relative path and appending some arbitrary file name to that path.
 
@@ -60,7 +60,7 @@ Given a reference to some asset, and a name (ex: 'file.png') this will copy that
 | fileReference | `Expo.Asset`, `number`, `string`, `{uri: string}` | This will resolve into a downloaded `Expo.Asset` |
 | name          |                     `string`                      | The file will be copied with this name           |
 
-##### fromUriAsync
+#### fromUriAsync
 
 Given a file URI `string`, this will return an `Expo.Asset` that hasn't been downloaded yet.
 
@@ -69,7 +69,7 @@ Given a file URI `string`, this will return an `Expo.Asset` that hasn't been dow
 | remoteUri | `string`  | This remote URI will be downloaded and it's file info will be gathered |
 | fileName  | `?string` | This will be assigned to the `Expo.Asset.name`                         |
 
-##### fileInfoAsync
+#### fileInfoAsync
 
 Given a file URI `string`, this will cache the file and collect the `MD5` hash
 
@@ -90,4 +90,4 @@ const { localUri, width, height } = asset;
 
 ### TODO
 
-* Parse remote data format (json containing `uri`)
+* Parse HEIC from iOS 11
