@@ -32,16 +32,12 @@ export default class App extends React.Component {
       assetLibraryImage,
     };
 
-    console.log(assets);
-
     let parsed = {};
     const keys = Object.keys(assets);
     for (const key of keys) {
       const res = assets[key];
-
       const asset = await AssetUtils.resolveAsync(res);
       parsed[key] = asset;
-      console.log(key, 'parsed', asset);
     }
 
     const base64 = await AssetUtils.base64forImageUriAsync(remoteImageUri);
