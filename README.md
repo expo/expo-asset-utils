@@ -78,7 +78,7 @@ Given a file URI `string`, this will cache the file and collect the `MD5` hash
 | uri      | `string`  | This URI (local, remote, asset library) will be cached and it's `MD5` hash will be retrieved               |
 | name     | `?string` | This will be assigned to the `Expo.Asset.name`, if not provided the last component of the uri will be used |
 
-### Example
+### [Example](/examples/simple/App.js)
 
 ```js
 import AssetUtils from 'expo-asset-utils';
