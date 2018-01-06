@@ -1,6 +1,6 @@
 import AssetUtils from './node_modules/expo-asset-utils';
 import React from 'react';
-import { View, Text, FlatList, Image, CameraRoll } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Image, CameraRoll } from 'react-native';
 import Expo from 'expo';
 
 export default class App extends React.Component {
@@ -46,22 +46,9 @@ export default class App extends React.Component {
 
     const base64 = await AssetUtils.base64forImageUriAsync(remoteImageUri);
     const pngPrefix = 'data:image/png;base64,';
-    console.warn(pngPrefix + base64);
-
     parsed['base64'] = { uri: pngPrefix + base64.data };
 
     this.setState({ images: parsed });
-
-    // const { localUri, width, height } = asset;
-    // console.log(localUri, width, height);
-
-    // const modifiedUri = await AssetUtils.copyAssetToSameDirectoryWithNewNameAsync(
-    //   localUri,
-    //   'ben-affleck.jpg'
-    // );
-    // console.log(modifiedUri);
-    // this.setState({ source: { uri: localUri } });
-    // const base64 = await AssetUtils.base64forImageUriAsync();
   }
 
   renderItem = ({ item: key, index }) => {
@@ -69,16 +56,9 @@ export default class App extends React.Component {
 
     const item = images[key];
     return (
-      <View
-        key={index}
-        style={{
-          alignItems: 'center',
-          flexDirection: 'row',
-          paddingHorizontal: 24,
-          paddingVertical: 4,
-        }}>
-        <Image style={{ width: 100, backgroundColor: 'green', height: 100 }} source={item} />
-        <Text style={{ textAlign: 'center', fontSize: 16, marginLeft: 16 }}>{key}</Text>
+      <View key={index} style={styles.item}>
+        <Image style={styles.image} source={item} />
+        <Text style={styles.text}>{key}</Text>
       </View>
     );
   };
@@ -95,3 +75,22 @@ export default class App extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  item: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    paddingHorizontal: 24,
+    paddingVertical: 4,
+  },
+  text: {
+    textAlign: 'center',
+    fontSize: 16,
+    marginLeft: 16,
+  },
+  image: {
+    width: 100,
+    backgroundColor: 'green',
+    height: 100,
+  },
+});
