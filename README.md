@@ -2,7 +2,7 @@
 
 ---
 
-# expo-asset-utils
+# [expo-asset-utils](https://snack.expo.io/@bacon/expo-asset-utils-example)
 
 Utilities for converting files into Expo Assets.
 **Uses:**
@@ -87,6 +87,8 @@ const remoteImage = 'https://upload.wikimedia.org/wikipedia/en/1/17/Batman-BenAf
 const asset = await AssetUtil.resolveAsync(remoteImage);
 const { localUri, width, height } = asset;
 ```
+
+[**Checkout this Snack!**](https://snack.expo.io/@bacon/expo-asset-utils-example)
 
 ### TODO
 
