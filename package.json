@@ -5,11 +5,18 @@
   "files": ["lib"],
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
     "url": "github.com/expo/expo-asset-utils"
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "transform": {
+      "^.+\\.js?$": "babel-jest"
+    },
+    "transformIgnorePatterns": ["!node_modules/react-runtime"]
   },
   "keywords": ["expo", "asset", "utils", "react-native", "react"],
   "author": "Evan Bacon",
@@ -17,5 +24,14 @@
   "peerDependencies": {
     "expo": "^24.0.0",
     "react-native": "*"
+  },
+  "devDependencies": {
+    "expo": "^24.0.0",
+    "jest-expo": "^24.0.0",
+    "react-native-scripts": "1.3.1",
+    "react-test-renderer": "16.0.0-alpha.12",
+    "react": "16.0.0",
+    "react-native":
+      "https://github.com/expo/react-native/archive/sdk-24.0.0.tar.gz"
   }
 }
