@@ -78,6 +78,14 @@ Given a file URI `string`, this will cache the file and collect the `MD5` hash
 | uri      | `string`  | This URI (local, remote, asset library) will be cached and it's `MD5` hash will be retrieved               |
 | name     | `?string` | This will be assigned to the `Expo.Asset.name`, if not provided the last component of the uri will be used |
 
+##### base64forImageUriAsync
+
+Given a file URI `string`, this will return a base64 encoded string
+
+| Property |   Type   | Description                          |
+| -------- | :------: | ------------------------------------ |
+| uri      | `string` | This URI will be converted to base64 |
+
 ### Example
 
 ```js
