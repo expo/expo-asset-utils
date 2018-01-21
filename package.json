@@ -1,35 +1,21 @@
 {
   "name": "expo-asset-utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Utilities for converting files into Expo Assets",
   "files": ["lib"],
   "main": "lib/index.js",
-  "scripts": {
-    "test": "jest"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/expo/expo-asset-utils.git"
-  },
-  "jest": {
-    "preset": "jest-expo",
-    "transform": {
-      "^.+\\.js?$": "babel-jest"
-    },
-    "transformIgnorePatterns": ["!node_modules/react-runtime"]
   },
   "keywords": ["expo", "asset", "utils", "react-native", "react"],
   "author": "Evan Bacon",
   "license": "MIT",
   "peerDependencies": {
-    "expo": "*",
     "react-native": "*"
   },
   "devDependencies": {
     "expo": "^25.0.0",
-    "jest-expo": "^24.0.0",
-    "react-native-scripts": "1.3.1",
-    "react-test-renderer": "16.0.0-alpha.12",
     "react": "16.0.0",
     "react-native":
       "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz"
