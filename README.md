@@ -64,19 +64,19 @@ Given a reference to some asset, and a name (ex: 'file.png') this will copy that
 
 Given a file URI `string`, this will return an `Expo.Asset` that hasn't been downloaded yet.
 
-| Property  |   Type    | Description                                                            |
-| --------- | :-------: | ---------------------------------------------------------------------- |
-| remoteUri | `string`  | This remote URI will be downloaded and it's file info will be gathered |
-| fileName  | `?string` | This will be assigned to the `Expo.Asset.name`                         |
+| Property  |   Type   | Description                                                            |
+| --------- | :------: | ---------------------------------------------------------------------- |
+| remoteUri | `string` | This remote URI will be downloaded and it's file info will be gathered |
+| fileName  | `string` | This will be assigned to the `Expo.Asset.name`                         |
 
 #### fileInfoAsync
 
 Given a file URI `string`, this will cache the file and collect the `MD5` hash
 
-| Property |   Type    | Description                                                                                                |
-| -------- | :-------: | ---------------------------------------------------------------------------------------------------------- |
-| uri      | `string`  | This URI (local, remote, asset library) will be cached and it's `MD5` hash will be retrieved               |
-| name     | `?string` | This will be assigned to the `Expo.Asset.name`, if not provided the last component of the uri will be used |
+| Property |   Type   | Description                                                                                                |
+| -------- | :------: | ---------------------------------------------------------------------------------------------------------- |
+| uri      | `string` | This URI (local, remote, asset library) will be cached and it's `MD5` hash will be retrieved               |
+| name     | `string` | This will be assigned to the `Expo.Asset.name`, if not provided the last component of the uri will be used |
 
 ##### base64forImageUriAsync
 
@@ -86,7 +86,7 @@ Given a file URI `string`, this will return a base64 encoded string
 | -------- | :------: | ------------------------------------ |
 | uri      | `string` | This URI will be converted to base64 |
 
-### [Example](/examples/simple/App.js)
+git### [Example](/examples/simple/App.js)
 
 ```js
 import AssetUtils from 'expo-asset-utils';
