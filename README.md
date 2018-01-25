@@ -80,7 +80,7 @@ Given a file URI `string`, this will cache the file and collect the `MD5` hash
 
 ##### base64forImageUriAsync
 
-Given a file URI `string`, this will return a base64 encoded string
+Given a image URI `string`, this will return a base64 encoded string and the image size: `{ data: string, size: { width: number, height: number } }`
 
 | Property |   Type   | Description                          |
 | -------- | :------: | ------------------------------------ |
