@@ -1,6 +1,6 @@
 {
   "name": "expo-asset-utils",
-  "version": "0.0.3",
+  "version": "0.0.4-alpha.0",
   "description": "Utilities for converting files into Expo Assets",
   "files": ["lib"],
   "main": "lib/index.js",

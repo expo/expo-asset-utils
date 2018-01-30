@@ -7,9 +7,9 @@
   "main": "node_modules/expo/AppEntry.js",
   "dependencies": {
     "expo": "^25.0.0",
+    "expo-asset-utils": "../../expo-asset-utils-v0.0.4-alpha.0.tgz",
     "react": "16.0.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-24.0.0.tar.gz",
-    "expo-asset-utils": "../../"
+    "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz"
   },
   "devDependencies": {
     "eslint": "^4.9.0",

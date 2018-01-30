@@ -86,7 +86,25 @@ Given a image URI `string`, this will return a base64 encoded string and the ima
 | -------- | :------: | ------------------------------------ |
 | uri      | `string` | This URI will be converted to base64 |
 
-git### [Example](/examples/simple/App.js)
+##### arrayFromObject
+
+Given an object this will recursively surface the items into an array. Generally used for preloading assets.
+
+| Property |   Type   | Description                          |
+| -------- | :------: | ------------------------------------ |
+| object   | `Object` | This will be converted into an array |
+
+##### cacheAssetsAsync
+
+Given a image URI `string`, this will return a base64 encoded string and the image size: `{ data: string, size: { width: number, height: number } }`
+
+| Property |  Type   | Description                                                                                                                                   |
+| -------- | :-----: | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| images   | `Array` | These will be loaded using React Native `Image` if they are strings, and Expo preloading if they are static resources                         |
+| files    | `Array` | An `Array` of static resources that will be downloaded using Expo preloading                                                                  |
+| fonts    | `Array` | An `Array` of `{ [fontFamily]: staticResource }` that will be loaded using `Expo.Font` and then be available through `fontFamily` style props |
+
+### [Example](/examples/simple/App.js)
 
 ```js
 import AssetUtils from 'expo-asset-utils';

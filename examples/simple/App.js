@@ -1,12 +1,49 @@
+import Expo from 'expo';
 import AssetUtils from './node_modules/expo-asset-utils';
 import React from 'react';
-import { View, Text, StyleSheet, FlatList, Image, CameraRoll } from 'react-native';
-import Expo from 'expo';
-
+import { CameraRoll, FlatList, Image, StyleSheet, Text, View } from 'react-native';
+import Assets from './Assets';
 export default class App extends React.Component {
   state = {
     images: {},
+    loading: true,
   };
+
+  get fonts() {
+    let items = {};
+    const keys = Object.keys(Assets.fonts || {});
+    for (let key of keys) {
+      const item = Assets.fonts[key];
+      const name = key.substr(0, key.lastIndexOf('.'));
+      items[name] = item;
+    }
+    return [items];
+  }
+
+  get files() {
+    return [
+      ...AssetUtils.arrayFromObject(Assets.images || {}),
+      ...AssetUtils.arrayFromObject(Assets.models || {}),
+    ];
+  }
+
+  get audio() {
+    return AssetUtils.arrayFromObject(Assets.audio);
+  }
+
+  async preloadAssets() {
+    await AssetUtils.cacheAssetsAsync({
+      fonts: this.fonts,
+      files: this.files,
+      audio: this.audio,
+    });
+    this.setState({ loading: false });
+  }
+
+  componentWillMount() {
+    this.preloadAssets();
+  }
+
   async componentDidMount() {
     const { status } = await Expo.Permissions.askAsync(Expo.Permissions.CAMERA_ROLL);
     if (status !== 'granted') {
@@ -58,7 +95,11 @@ export default class App extends React.Component {
       </View>
     );
   };
-  render() {
+
+  get loading() {
+    return <Expo.AppLoading />;
+  }
+  get screen() {
     const { images } = this.state;
     return (
       <FlatList
@@ -69,6 +110,10 @@ export default class App extends React.Component {
         renderItem={this.renderItem}
       />
     );
+  }
+
+  render() {
+    return this.state.loading ? this.loading : this.screen;
   }
 }
 
@@ -83,6 +128,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 16,
     marginLeft: 16,
+    fontFamily: 'GothamNarrow-Book',
   },
   image: {
     width: 100,
