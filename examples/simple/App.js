@@ -4,6 +4,7 @@ import React from 'react';
 import { CameraRoll, Clipboard, FlatList, Image, StyleSheet, Text, View } from 'react-native';
 import Assets from './Assets';
 import getGalleryImageAsync from './getGalleryImageAsync';
+import Toast from 'react-native-root-toast';
 export default class App extends React.Component {
   state = {
     images: {},
@@ -124,6 +125,16 @@ const base64 = '${pngPrefix}' + data;`,
     this.setState({ images: parsed });
   }
 
+  showToast = message => {
+    this.toast && this.toast.destroy();
+    this.toast = Toast.show(message, {
+      onHidden: () => {
+        this.toast.destroy();
+        this.toast = null;
+      },
+    });
+  };
+
   renderItem = ({ item: key, index }) => {
     const { images } = this.state;
 
@@ -140,6 +151,7 @@ const base64 = '${pngPrefix}' + data;`,
         <Text
           onPress={() => {
             Clipboard.setString(example);
+            this.showToast('Copied to clipboard!');
           }}
           style={styles.example}>
           {example}
