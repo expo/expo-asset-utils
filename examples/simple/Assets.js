@@ -3,7 +3,8 @@ export default {
 		"sound.mp3": require(`./assets/audio/sound.mp3`)
 	},
 	"fonts": {
-		"GothamNarrow-Book.ttf": require(`./assets/fonts/GothamNarrow-Book.ttf`)
+		"GothamNarrow-Book.ttf": require(`./assets/fonts/GothamNarrow-Book.ttf`),
+		"GothamNarrow-Medium.ttf": require(`./assets/fonts/GothamNarrow-Medium.ttf`)
 	},
 	"icons": {
 		"app-icon.png": require(`./assets/icons/app-icon.png`),

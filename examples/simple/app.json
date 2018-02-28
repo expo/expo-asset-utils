@@ -1,12 +1,11 @@
 {
   "expo": {
-    "name": "simple",
-    "description": "expo-asset-utils simple example",
-    "slug": "expo-asset-utils-simple",
+    "name": "expo-asset-utils",
+    "description": "expo-asset-utils example",
+    "slug": "expo-asset-utils",
     "sdkVersion": "25.0.0",
     "version": "1.0.0",
-    "orientation": "portrait",
-    "primaryColor": "#cccccc",
+    "primaryColor": "#C2D3FF",
     "icon": "./assets/icons/app-icon.png",
     "loading": {
       "icon": "./assets/icons/app-icon.png",
