@@ -26,7 +26,7 @@ export default class App extends React.Component {
   get files() {
     return [
       ...AssetUtils.arrayFromObject(Assets.images || {}),
-      ...AssetUtils.arrayFromObject(Assets.models || {}),
+      ...AssetUtils.arrayFromObject(Assets.models || {})
     ];
   }
 
