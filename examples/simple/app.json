@@ -3,6 +3,7 @@
     "name": "expo-asset-utils",
     "description": "expo-asset-utils example",
     "slug": "expo-asset-utils",
+    "privacy": "public",
     "sdkVersion": "25.0.0",
     "version": "1.0.0",
     "primaryColor": "#C2D3FF",

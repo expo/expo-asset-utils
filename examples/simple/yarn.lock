@@ -1699,9 +1699,9 @@ expand-range@^1.8.1:
   dependencies:
     fill-range "^2.1.0"
 
-expo-asset-utils@../../expo-asset-utils-v0.0.4-alpha.0.tgz:
-  version "0.0.4-alpha.0"
-  resolved "../../expo-asset-utils-v0.0.4-alpha.0.tgz#f910ef9d81b085abcb34a1bf1699d34bc7130566"
+expo-asset-utils@../../expo-asset-utils-v0.0.4-alpha.2.tgz:
+  version "0.0.4-alpha.2"
+  resolved "../../expo-asset-utils-v0.0.4-alpha.2.tgz#22cbdcc636591a92251d67b0ec37e813f951775a"
 
 expo@^25.0.0:
   version "25.0.0"

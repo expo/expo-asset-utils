@@ -209,7 +209,7 @@ await AssetUtils.resolveAsync(uri);`,
         contentContainerStyle={{ paddingTop: Expo.Constants.statusBarHeight }}
         ListFooterComponent={this.renderFooter}
         data={Object.keys(images)}
-        keyExtractor={(item, index) => index}
+        keyExtractor={(item, index) => item}
         renderItem={this.renderItem}
       />
     );
