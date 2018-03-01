@@ -1,6 +1,6 @@
 {
   "name": "expo-asset-utils",
-  "version": "0.0.4-alpha.1",
+  "version": "0.0.4-alpha.2",
   "description": "Utilities for converting files into Expo Assets",
   "homepage": "https://github.com/expo/expo-asset-utils#readme",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "git+https://github.com/expo/expo-asset-utils.git"
   },
   "bugs": {
-    "url": "https://github.com/expo/expo-pixi/issues"
+    "url": "https://github.com/expo/expo-asset-utils/issues"
   },
   "author": {
     "email": "bacon@expo.io",
