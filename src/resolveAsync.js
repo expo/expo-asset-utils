@@ -1,14 +1,24 @@
 // @flow
-import { Asset } from 'expo';
+import Expo, { Asset } from 'expo';
 import isReactImageFormat from './isReactImageFormat';
 import fromUriAsync from './fromUriAsync';
-import Expo from 'expo';
+
 type ImageFormat = {
   uri: string,
+  width?: number,
+  height?: number,
 };
+
 export type WildCard = Asset | number | string | ImageFormat;
 
-const resolveAsync = async (fileReference: WildCard): Promise<?Expo.Asset> => {
+export type Options = {
+  fileName: string,
+};
+
+const resolveAsync = async (
+  fileReference: WildCard,
+  options: Options = {}
+): Promise<?Expo.Asset> => {
   if (fileReference instanceof Asset) {
     /// Asset
     if (!fileReference.localUri) {
@@ -17,7 +27,7 @@ const resolveAsync = async (fileReference: WildCard): Promise<?Expo.Asset> => {
     return fileReference;
   } else if (typeof fileReference === 'string') {
     /// uri
-    const asset = await fromUriAsync(fileReference);
+    const asset = await fromUriAsync(fileReference, options.fileName);
     if (asset) {
       return await resolveAsync(asset);
     }
@@ -28,7 +38,7 @@ const resolveAsync = async (fileReference: WildCard): Promise<?Expo.Asset> => {
     return output;
   } else if (isReactImageFormat(fileReference)) {
     /// { uri: string }
-    const asset = await fromUriAsync(fileReference.uri);
+    const asset = await fromUriAsync(fileReference.uri, options.fileName);
     if (asset) {
       return await resolveAsync(asset);
     }

@@ -1,6 +1,7 @@
+// @flow
+import Expo from 'expo';
 import imageSizeAsync from './imageSizeAsync';
 import fileInfoAsync from './fileInfoAsync';
-import Expo from 'expo';
 
 function isImageType(type: string): boolean {
   return type.match(/(jpeg|jpg|gif|png|bmp)$/) != null;
@@ -15,7 +16,7 @@ function getExtension(url: string): string {
     .toLowerCase();
 }
 
-async function fromUriAsync(remoteUri, fileName) {
+async function fromUriAsync(remoteUri: string, fileName: ?string): Promise<Expo.Asset> {
   const { uri, name, hash } = await fileInfoAsync(remoteUri, fileName);
 
   if (uri) {

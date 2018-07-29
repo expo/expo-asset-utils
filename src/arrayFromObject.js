@@ -1,4 +1,5 @@
-export default function arrayFromObject(object) {
+// @flow
+export default function arrayFromObject(object: Object): Array {
   let images = [];
   Object.keys(object).map(key => {
     let item = object[key];

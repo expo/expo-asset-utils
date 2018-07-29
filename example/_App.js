@@ -1,5 +1,5 @@
 import Expo from 'expo';
-import AssetUtils from './node_modules/expo-asset-utils';
+import AssetUtils from 'expo-asset-utils';
 import React from 'react';
 import { CameraRoll, Clipboard, FlatList, Image, StyleSheet, Text, View } from 'react-native';
 import Assets from './Assets';
