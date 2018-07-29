@@ -6,11 +6,14 @@
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
   "dependencies": {
-    "expo": "^25.0.0",
-    "expo-asset-utils": "../../expo-asset-utils-v0.0.4-alpha.2.tgz",
-    "react": "16.0.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz",
-    "react-native-root-toast": "^3.0.1"
+    "async-retry": "^1.1.4",
+    "expo": "^29.0.0",
+    "expo-asset-utils": "^0.0.4-alpha.2",
+    "immutable": "^3.8.1",
+    "jasmine-core": "^2.4.1",
+    "lodash": "^4.17.4",
+    "react": "16.3.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-29.0.0.tar.gz"
   },
   "devDependencies": {
     "eslint": "^4.9.0",

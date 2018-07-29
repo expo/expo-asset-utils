@@ -1,3 +1,4 @@
+// @flow
 function filenameFromUri(url: string): string {
   return url
     .substring(url.lastIndexOf('/') + 1)

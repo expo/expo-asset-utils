@@ -1,23 +1,25 @@
+// @flow
 import { Image } from 'react-native';
 import { Asset, Font } from 'expo';
 
+export type CacheOptions = {
+  images: Array,
+  files: Array,
+  fonts: Array,
+};
 export default function cacheAssetsAsync({
   images = [],
   files = [],
   fonts = [],
-}) {
-  return Promise.all([
-    ...cacheImages(images),
-    ...raw(files),
-    ...cacheFonts(fonts),
-  ]);
+}: CacheOptions): Promise<Array> {
+  return Promise.all([...cacheImages(images), ...raw(files), ...cacheFonts(fonts)]);
 }
 
-function raw(files) {
+function raw(files: Array<number>): Array<Promise> {
   return files.map(file => Asset.fromModule(file).downloadAsync());
 }
 
-function cacheImages(images) {
+function cacheImages(images: Array): Promise {
   return images.map(image => {
     if (typeof image === 'string') {
       return Image.prefetch(image);
@@ -27,6 +29,6 @@ function cacheImages(images) {
   });
 }
 
-function cacheFonts(fonts) {
+function cacheFonts(fonts: Array): Array<Promise> {
   return fonts.map(font => Font.loadAsync(font));
 }

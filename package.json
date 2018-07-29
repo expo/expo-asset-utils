@@ -1,6 +1,6 @@
 {
   "name": "expo-asset-utils",
-  "version": "0.0.4-alpha.2",
+  "version": "0.0.4-alpha.3",
   "description": "Utilities for converting files into Expo Assets",
   "homepage": "https://github.com/expo/expo-asset-utils#readme",
   "repository": {
@@ -16,15 +16,45 @@
   },
   "keywords": ["expo", "asset", "utils", "react-native", "react"],
   "license": "MIT",
-  "files": ["lib"],
-  "main": "lib/index.js",
+  "readmeFilename": "README.md",
+  "files": ["dist"],
+  "main": "dist/index.js",
   "peerDependencies": {
-    "react-native": "*"
+    "react-native": "*",
+    "expo": "^25.0.0",
+    "react": "^16.0.0"
   },
   "devDependencies": {
-    "expo": "^25.0.0",
-    "react": "16.0.0",
-    "react-native":
-      "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz"
+    "babel-preset-expo": "^4.0.0",
+    "eslint": "^5.1.0",
+    "eslint-config-universe": "^1.0.6",
+    "eslint-plugin-jest": "^21.2.0",
+    "husky": "^0.14.3",
+    "jest": "^23.4.1",
+    "jest-expo": "^29.0.0",
+    "prettier": "^1.7.4",
+    "rollup": "0.63.4",
+    "rollup-plugin-commonjs": "9.1.4",
+    "rollup-plugin-flow": "^1.1.1",
+    "rollup-plugin-node-resolve": "3.3.0",
+    "rollup-plugin-typescript2": "0.16.1"
+  },
+  "eslintConfig": {
+    "extends": "universe/native"
+  },
+  "directories": {
+    "example": "examples",
+    "lib": "src"
+  },
+  "pre-push": ["lint"],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "prepare": "npm run build",
+    "prepush": "npm run lint",
+    "lint:example": "eslint example/",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "sync-example": "npm run build && rsync -rv dist example/node_modules/expo-asset-utils"
   }
 }

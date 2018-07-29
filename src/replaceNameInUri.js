@@ -1,3 +1,4 @@
+// @flow
 import filenameFromUri from './filenameFromUri';
 
 function replaceNameInUri(url: string, filename: string): string {

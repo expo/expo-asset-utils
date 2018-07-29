@@ -1,3 +1,4 @@
+// @flow
 import Expo from 'expo';
 
 import filenameFromUri from './filenameFromUri';
@@ -10,12 +11,18 @@ function isLocalUri(uri: string): boolean {
   return uri.toLowerCase().startsWith('file://');
 }
 
-async function getHashAsync(uri: string): string {
+async function getHashAsync(uri: string): Promise<string> {
   const { md5 } = await Expo.FileSystem.getInfoAsync(uri, { md5: true });
   return md5;
 }
 
-async function resolveLocalFileAsync({ uri, name }) {
+export type ImageData = {
+  uri: string,
+  name: string,
+  hash?: string,
+};
+
+async function resolveLocalFileAsync({ uri, name }: ImageData): Promise<ImageData> {
   let hash = await getHashAsync(uri);
   if (!hash) {
     return null;
@@ -23,7 +30,7 @@ async function resolveLocalFileAsync({ uri, name }) {
   return { uri, name, hash };
 }
 
-async function fileInfoAsync(url, name) {
+async function fileInfoAsync(url: ?string, name: string): Promise<ImageData> {
   if (!url) {
     console.error('fileInfoAsync: cannot load from empty url!');
     return null;
@@ -41,24 +48,25 @@ async function fileInfoAsync(url, name) {
     return { uri: localUri, name, hash };
   } else if (isLocalUri(url)) {
     /// local image: we just need the hash
-    let file = await resolveLocalFileAsync({uri: url, name})
+    let file = await resolveLocalFileAsync({ uri: url, name });
     if (!file) {
-      file = await resolveLocalFileAsync({uri: localUri, name})
+      file = await resolveLocalFileAsync({ uri: localUri, name });
       if (!file) {
-        console.error("ExpoAssetUtils.fileInfoAsync: couldn't resolve md5 hash for local uri: " + url + " or alternate: " + localUri)
+        console.error(
+          "ExpoAssetUtils.fileInfoAsync: couldn't resolve md5 hash for local uri: " +
+            url +
+            ' or alternate: ' +
+            localUri
+        );
         return null;
       }
     }
     return file;
   } else {
     /// remote image: download first
-    const { uri, md5: hash } = await Expo.FileSystem.downloadAsync(
-      url,
-      localUri,
-      {
-        md5: true,
-      },
-    );
+    const { uri, md5: hash } = await Expo.FileSystem.downloadAsync(url, localUri, {
+      md5: true,
+    });
     return { uri, name, hash };
   }
 }

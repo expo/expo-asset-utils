@@ -1,3 +1,4 @@
+// @flow
 import { ImageEditor } from 'react-native';
 import imageSizeAsync from './imageSizeAsync';
 
