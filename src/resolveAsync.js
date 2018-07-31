@@ -1,5 +1,5 @@
 // @flow
-import Expo, { Asset } from 'expo';
+import { Asset } from 'expo-asset';
 import isReactImageFormat from './isReactImageFormat';
 import fromUriAsync from './fromUriAsync';
 
@@ -15,10 +15,7 @@ export type Options = {
   fileName: string,
 };
 
-const resolveAsync = async (
-  fileReference: WildCard,
-  options: Options = {}
-): Promise<?Expo.Asset> => {
+const resolveAsync = async (fileReference: WildCard, options: Options = {}): Promise<?Asset> => {
   if (fileReference instanceof Asset) {
     /// Asset
     if (!fileReference.localUri) {

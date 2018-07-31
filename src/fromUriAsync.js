@@ -1,5 +1,5 @@
 // @flow
-import Expo from 'expo';
+import { Asset } from 'expo-asset';
 import imageSizeAsync from './imageSizeAsync';
 import fileInfoAsync from './fileInfoAsync';
 
@@ -16,7 +16,7 @@ function getExtension(url: string): string {
     .toLowerCase();
 }
 
-async function fromUriAsync(remoteUri: string, fileName: ?string): Promise<Expo.Asset> {
+async function fromUriAsync(remoteUri: string, fileName: ?string): Promise<Asset> {
   const { uri, name, hash } = await fileInfoAsync(remoteUri, fileName);
 
   if (uri) {
@@ -29,7 +29,7 @@ async function fromUriAsync(remoteUri: string, fileName: ?string): Promise<Expo.
       height = size.height;
     }
 
-    return new Expo.Asset({ name, type, hash, uri, width, height });
+    return new Asset({ name, type, hash, uri, width, height });
   }
 }
 

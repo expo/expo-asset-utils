@@ -14,10 +14,18 @@
     "email": "bacon@expo.io",
     "name": "Evan Bacon"
   },
-  "keywords": ["expo", "asset", "utils", "react-native", "react"],
+  "keywords": [
+    "expo",
+    "asset",
+    "utils",
+    "react-native",
+    "react"
+  ],
   "license": "MIT",
   "readmeFilename": "README.md",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "dist/index.js",
   "peerDependencies": {
     "react-native": "*",
@@ -46,7 +54,9 @@
     "example": "examples",
     "lib": "src"
   },
-  "pre-push": ["lint"],
+  "pre-push": [
+    "lint"
+  ],
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
@@ -56,5 +66,9 @@
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
     "sync-example": "npm run build && rsync -rv dist example/node_modules/expo-asset-utils"
+  },
+  "dependencies": {
+    "expo-asset": "^1.0.0",
+    "expo-file-system": "^1.0.0"
   }
 }
