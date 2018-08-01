@@ -2,11 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
 var reactNative = require('react-native');
-var Expo = require('expo');
-var Expo__default = _interopDefault(Expo);
+var expoFileSystem = require('expo-file-system');
+var expoAsset = require('expo-asset');
 
 var isReactImageFormat = object =>
   object !== null &&
@@ -42,7 +40,7 @@ function isLocalUri(uri) {
 }
 
 async function getHashAsync(uri) {
-  const { md5 } = await Expo__default.FileSystem.getInfoAsync(uri, { md5: true });
+  const { md5 } = await expoFileSystem.FileSystem.getInfoAsync(uri, { md5: true });
   return md5;
 }
 
@@ -61,11 +59,11 @@ async function fileInfoAsync(url, name) {
     return null;
   }
   name = name || filenameFromUri(url);
-  const localUri = Expo__default.FileSystem.cacheDirectory + name;
+  const localUri = expoFileSystem.FileSystem.cacheDirectory + name;
 
   if (isAssetLibraryUri(url)) {
     /// ios asset: we need to copy this over and then get the hash
-    await Expo__default.FileSystem.copyAsync({
+    await expoFileSystem.FileSystem.copyAsync({
       from: url,
       to: localUri,
     });
@@ -89,7 +87,7 @@ async function fileInfoAsync(url, name) {
     return file;
   } else {
     /// remote image: download first
-    const { uri, md5: hash } = await Expo__default.FileSystem.downloadAsync(url, localUri, {
+    const { uri, md5: hash } = await expoFileSystem.FileSystem.downloadAsync(url, localUri, {
       md5: true,
     });
     return { uri, name, hash };
@@ -124,7 +122,7 @@ async function fromUriAsync(remoteUri, fileName) {
       height = size.height;
     }
 
-    return new Expo__default.Asset({ name, type, hash, uri, width, height });
+    return new expoAsset.Asset({ name, type, hash, uri, width, height });
   }
 }
 
@@ -133,11 +131,8 @@ async function fromUriAsync(remoteUri, fileName) {
 
 
 
-const resolveAsync = async (
-  fileReference,
-  options = {}
-) => {
-  if (fileReference instanceof Expo.Asset) {
+const resolveAsync = async (fileReference, options = {}) => {
+  if (fileReference instanceof expoAsset.Asset) {
     /// Asset
     if (!fileReference.localUri) {
       await fileReference.downloadAsync();
@@ -151,7 +146,7 @@ const resolveAsync = async (
     }
   } else if (typeof fileReference === 'number') {
     /// static resource
-    const asset = await Expo.Asset.fromModule(fileReference);
+    const asset = await expoAsset.Asset.fromModule(fileReference);
     const output = await resolveAsync(asset);
     return output;
   } else if (isReactImageFormat(fileReference)) {
@@ -188,7 +183,7 @@ async function copyAssetToSameDirectoryWithNewNameAsync(
 ) {
   const url = await uriAsync(fileReference);
   const nextUrl = replaceNameInUri(url, name);
-  await Expo__default.FileSystem.copyAsync({ from: url, to: nextUrl });
+  await expoFileSystem.FileSystem.copyAsync({ from: url, to: nextUrl });
   return nextUrl;
 }
 
@@ -257,7 +252,7 @@ function cacheAssetsAsync({
 }
 
 function raw(files) {
-  return files.map(file => Expo.Asset.fromModule(file).downloadAsync());
+  return files.map(file => expoAsset.Asset.fromModule(file).downloadAsync());
 }
 
 function cacheImages(images) {
@@ -265,13 +260,18 @@ function cacheImages(images) {
     if (typeof image === 'string') {
       return reactNative.Image.prefetch(image);
     } else {
-      return Expo.Asset.fromModule(image).downloadAsync();
+      return expoAsset.Asset.fromModule(image).downloadAsync();
     }
   });
 }
 
 function cacheFonts(fonts) {
-  return fonts.map(font => Expo.Font.loadAsync(font));
+  try {
+    const { Font } = require('expo');
+    return fonts.map(font => Font.loadAsync(font));
+  } catch (error) {
+    throw new Error('Expo have to be installed if you want to use Font');
+  }
 }
 
 

@@ -1,5 +1,5 @@
 // @flow
-import Expo from 'expo';
+import { FileSystem } from 'expo-file-system';
 
 import filenameFromUri from './filenameFromUri';
 
@@ -12,7 +12,7 @@ function isLocalUri(uri: string): boolean {
 }
 
 async function getHashAsync(uri: string): Promise<string> {
-  const { md5 } = await Expo.FileSystem.getInfoAsync(uri, { md5: true });
+  const { md5 } = await FileSystem.getInfoAsync(uri, { md5: true });
   return md5;
 }
 
@@ -36,11 +36,11 @@ async function fileInfoAsync(url: ?string, name: string): Promise<ImageData> {
     return null;
   }
   name = name || filenameFromUri(url);
-  const localUri = Expo.FileSystem.cacheDirectory + name;
+  const localUri = FileSystem.cacheDirectory + name;
 
   if (isAssetLibraryUri(url)) {
     /// ios asset: we need to copy this over and then get the hash
-    await Expo.FileSystem.copyAsync({
+    await FileSystem.copyAsync({
       from: url,
       to: localUri,
     });
@@ -64,7 +64,7 @@ async function fileInfoAsync(url: ?string, name: string): Promise<ImageData> {
     return file;
   } else {
     /// remote image: download first
-    const { uri, md5: hash } = await Expo.FileSystem.downloadAsync(url, localUri, {
+    const { uri, md5: hash } = await FileSystem.downloadAsync(url, localUri, {
       md5: true,
     });
     return { uri, name, hash };
