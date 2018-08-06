@@ -1,6 +1,6 @@
 {
   "name": "expo-asset-utils",
-  "version": "0.0.4-alpha.3",
+  "version": "0.0.5",
   "description": "Utilities for converting files into Expo Assets",
   "homepage": "https://github.com/expo/expo-asset-utils#readme",
   "repository": {
@@ -29,7 +29,6 @@
   "main": "dist/index.js",
   "peerDependencies": {
     "react-native": "*",
-    "expo": "^25.0.0",
     "react": "^16.0.0"
   },
   "devDependencies": {
