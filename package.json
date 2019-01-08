@@ -67,7 +67,7 @@
     "sync-example": "npm run build && rsync -rv dist example/node_modules/expo-asset-utils"
   },
   "dependencies": {
-    "expo-asset": "^1.0.0",
-    "expo-file-system": "^1.0.0"
+    "expo-asset": "~2.0.0",
+    "expo-file-system": "~2.0.0"
   }
 }
