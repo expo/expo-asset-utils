@@ -5,10 +5,13 @@ import jasmineModule from 'jasmine-core/lib/jasmine-core/jasmine';
 import React from 'react';
 import { Dimensions, Linking, NativeModules, Platform, ScrollView, Text, View } from 'react-native';
 
+import * as Constants from 'expo-constants';
+
 import * as TestUtils from './TestUtils';
 
-
 let { ExponentTest } = NativeModules;
+
+const { statusBarHeight = 18 } = Constants; /* eslint-disable-line */
 
 // List of all modules for tests. Each file path must be statically present for
 // the packager to pick them all up.
@@ -307,7 +310,9 @@ export default class App extends React.Component {
           }
           {r.get('description')} ({status})
         </Text>
-        {r.get('failedExpectations').map((e, i) => <Text key={i}>{e.get('message')}</Text>)}
+        {r.get('failedExpectations').map((e, i) => (
+          <Text key={i}>{e.get('message')}</Text>
+        ))}
       </View>
     );
   };
@@ -336,9 +341,7 @@ export default class App extends React.Component {
   _onScrollViewContentSizeChange = (contentWidth, contentHeight) => {
     if (this._scrollViewRef) {
       this._scrollViewRef.scrollTo({
-        y:
-          Math.max(0, contentHeight - Dimensions.get('window').height) +
-          Expo.Constants.statusBarHeight,
+        y: Math.max(0, contentHeight - Dimensions.get('window').height) + statusBarHeight,
       });
     }
   };
@@ -370,7 +373,7 @@ export default class App extends React.Component {
         <View
           style={{
             flex: 1,
-            marginTop: Expo.Constants.statusBarHeight || 18,
+            marginTop: statusBarHeight,
             alignItems: 'center',
             justifyContent: 'center',
           }}>
@@ -383,7 +386,7 @@ export default class App extends React.Component {
       <View
         style={{
           flex: 1,
-          marginTop: Expo.Constants.statusBarHeight || 18,
+          marginTop: statusBarHeight,
           alignItems: 'stretch',
           justifyContent: 'center',
         }}

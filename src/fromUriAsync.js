@@ -1,6 +1,6 @@
 // @flow
 import { Asset } from 'expo-asset';
-import imageSizeAsync from './imageSizeAsync';
+import { getSizeAsync } from './ImageUtils';
 import fileInfoAsync from './fileInfoAsync';
 
 function isImageType(type: string): boolean {
@@ -24,7 +24,7 @@ async function fromUriAsync(remoteUri: string, fileName: ?string): Promise<Asset
     let width = undefined;
     let height = undefined;
     if (isImageType(type)) {
-      const size = await imageSizeAsync(uri);
+      const size = await getSizeAsync(uri);
       width = size.width;
       height = size.height;
     }

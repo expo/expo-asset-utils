@@ -1,7 +1,7 @@
 'use strict';
-import Expo from 'expo';
 import AssetUtils from 'expo-asset-utils';
 import React from 'react';
+import { Asset } from 'expo-asset';
 
 import getGalleryImageAsync from '../getGalleryImageAsync';
 import * as TestUtils from '../TestUtils';
@@ -69,7 +69,7 @@ export async function test(t) {
         t.expect(!!asset.localUri).toBe(true);
       });
       t.it('returns an Expo Asset from a Expo Asset', async () => {
-        const asset = await AssetUtils.resolveAsync(Expo.Asset.fromModule(require('../icon.png')));
+        const asset = await AssetUtils.resolveAsync(Asset.fromModule(require('../icon.png')));
         t.expect(!!asset).toBe(true);
         t.expect(!!asset.localUri).toBe(true);
       });
@@ -97,9 +97,9 @@ export async function test(t) {
 
     t.describe('AssetUtils.imageSizeAsync()', () => {
       t.it('get width & height from local uri', async () => {
-        const asset = Expo.Asset.fromModule(require('../icon.png'));
+        const asset = Asset.fromModule(require('../icon.png'));
         await asset.downloadAsync();
-        const { width, height } = await AssetUtils.imageSizeAsync(asset.localUri);
+        const { width, height } = await AssetUtils.ImageUtils.getSizeAsync(asset.localUri);
         t.expect(typeof width).toBe('number');
         t.expect(typeof height).toBe('number');
       });
@@ -107,9 +107,9 @@ export async function test(t) {
 
     t.describe('AssetUtils.imageSizeAsync()', () => {
       t.it('get width & height from local uri', async () => {
-        const asset = Expo.Asset.fromModule(require('../icon.png'));
+        const asset = Asset.fromModule(require('../icon.png'));
         await asset.downloadAsync();
-        const { width, height } = await AssetUtils.imageSizeAsync(asset.localUri);
+        const { width, height } = await AssetUtils.ImageUtils.getSizeAsync(asset.localUri);
         t.expect(typeof width).toBe('number');
         t.expect(typeof height).toBe('number');
       });

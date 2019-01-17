@@ -23,7 +23,7 @@ export type ImageData = {
 };
 
 async function resolveLocalFileAsync({ uri, name }: ImageData): Promise<ImageData> {
-  let hash = await getHashAsync(uri);
+  const hash = await getHashAsync(uri);
   if (!hash) {
     return null;
   }
@@ -32,7 +32,7 @@ async function resolveLocalFileAsync({ uri, name }: ImageData): Promise<ImageDat
 
 async function fileInfoAsync(url: ?string, name: string): Promise<ImageData> {
   if (!url) {
-    console.error('fileInfoAsync: cannot load from empty url!');
+    console.error('expo-asset-utils: fileInfoAsync(): cannot load from empty url!');
     return null;
   }
   name = name || filenameFromUri(url);
@@ -52,11 +52,8 @@ async function fileInfoAsync(url: ?string, name: string): Promise<ImageData> {
     if (!file) {
       file = await resolveLocalFileAsync({ uri: localUri, name });
       if (!file) {
-        console.error(
-          "ExpoAssetUtils.fileInfoAsync: couldn't resolve md5 hash for local uri: " +
-            url +
-            ' or alternate: ' +
-            localUri
+        throw new Error(
+          `expo-asset-utils: fileInfoAsync(): couldn't resolve md5 hash for local uri: ${url} or alternate: ${localUri}`
         );
         return null;
       }
