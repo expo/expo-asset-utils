@@ -1,7 +1,7 @@
-import Expo from 'expo';
+import { Permissions } from 'expo-permissions';
 import { CameraRoll } from 'react-native';
 export default async () => {
-  const { status } = await Expo.Permissions.askAsync(Expo.Permissions.CAMERA_ROLL);
+  const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
   if (status !== 'granted') {
     alert('failed to get library asset, please enable and restart demo');
     return;

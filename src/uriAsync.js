@@ -6,7 +6,7 @@ import resolveAsync from './resolveAsync';
 async function uriAsync(fileReference: WildCard, options): Promise<?string> {
   const asset = await resolveAsync(fileReference, options);
   if (!asset) {
-    console.error('uriAsync: failed to resolve asset', fileReference);
+    throw new Error(`expo-asset-utils: uriAsync(): failed to resolve asset: ${fileReference}`);
   }
   return asset.localUri;
 }

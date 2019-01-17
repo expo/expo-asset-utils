@@ -1,6 +1,6 @@
 // @flow
-import { Image } from 'react-native';
 import { Asset } from 'expo-asset';
+import { prefetch } from './ImageUtils';
 
 export type CacheOptions = {
   images: Array,
@@ -19,10 +19,10 @@ function raw(files: Array<number>): Array<Promise> {
   return files.map(file => Asset.fromModule(file).downloadAsync());
 }
 
-function cacheImages(images: Array): Promise {
+function cacheImages(images: Array): Promise[] {
   return images.map(image => {
     if (typeof image === 'string') {
-      return Image.prefetch(image);
+      return prefetch(image);
     } else {
       return Asset.fromModule(image).downloadAsync();
     }
@@ -31,7 +31,7 @@ function cacheImages(images: Array): Promise {
 
 function cacheFonts(fonts: Array): Array<Promise> {
   try {
-    const { Font } = require('expo');
+    const { Font } = require('expo-font');
     return fonts.map(font => Font.loadAsync(font));
   } catch (error) {
     throw new Error('Expo have to be installed if you want to use Font');

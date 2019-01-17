@@ -4,7 +4,7 @@
     "description": "expo-asset-utils example",
     "slug": "expo-asset-utils",
     "privacy": "public",
-    "sdkVersion": "29.0.0",
+    "sdkVersion": "32.0.0",
     "version": "1.0.0",
     "primaryColor": "#C2D3FF",
     "icon": "./assets/icons/app-icon.png",

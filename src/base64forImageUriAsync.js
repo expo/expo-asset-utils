@@ -1,21 +1,12 @@
 // @flow
-import { ImageStore } from 'react-native';
-
-import base64ForSystemTagAsync from './base64ForSystemTagAsync';
-import systemTagForImageAsync from './systemTagForImageAsync';
-import type { Data } from './systemTagForImageAsync';
+import { FileSystem } from 'expo-file-system';
+import { getSizeAsync } from './ImageUtils';
 
 async function base64forImageUriAsync(uri: string): Promise<Data> {
-  const { data: tag, size } = await systemTagForImageAsync(uri);
-
-  let data: string;
-  try {
-    data = await base64ForSystemTagAsync(tag);
-  } catch (error) {
-    console.log(error);
-  } finally {
-    ImageStore.removeImageForTag(tag);
-  }
+  const size = await getSizeAsync(uri);
+  const data = await FileSystem.readAsStringAsync(uri, {
+    encoding: FileSystem.EncodingTypes.Base64,
+  });
   return { data, size };
 }
 

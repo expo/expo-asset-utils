@@ -1,8 +1,6 @@
 .DS_Store
-/src
+npm-debug.log
 /example
 /node_modules
-test
-
-.babelrc
-npm-debug.log
+/__tests__
+.vscode
