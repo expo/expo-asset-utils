@@ -1,5 +1,5 @@
 // @flow
-import { Asset } from 'expo-asset';
+import * as Asset from 'expo-asset';
 import { getSizeAsync } from './ImageUtils';
 import fileInfoAsync from './fileInfoAsync';
 
