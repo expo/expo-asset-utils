@@ -1,6 +1,6 @@
 {
   "name": "expo-asset-utils",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Utilities for converting files into Expo Assets",
   "author": "Evan Bacon <bacon@expo.io> (https://expo.io/)",
   "files": [
