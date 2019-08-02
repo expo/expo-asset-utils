@@ -1,6 +1,6 @@
 {
   "name": "expo-asset-utils",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Utilities for converting files into Expo Assets",
   "author": "Evan Bacon <bacon@expo.io> (https://expo.io/)",
   "files": [
@@ -55,7 +55,8 @@
   "peerDependencies": {
     "expo-asset": "~4.0.0",
     "expo-file-system": "~4.0.0",
-    "expo-font": "~4.0.0"
+    "expo-font": "~4.0.0",
+    "@unimodules/core": "*"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

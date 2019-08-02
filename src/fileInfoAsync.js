@@ -1,6 +1,6 @@
 // @flow
 import * as FileSystem from 'expo-file-system';
-
+import { Platform } from '@unimodules/core';
 import filenameFromUri from './filenameFromUri';
 
 function isAssetLibraryUri(uri: string): boolean {
@@ -23,6 +23,8 @@ export type ImageData = {
 };
 
 async function resolveLocalFileAsync({ uri, name }: ImageData): Promise<ImageData> {
+  if (Platform.OS === 'web') return { uri, name, hash: null };
+
   const hash = await getHashAsync(uri);
   if (!hash) {
     return null;
@@ -32,10 +34,15 @@ async function resolveLocalFileAsync({ uri, name }: ImageData): Promise<ImageDat
 
 async function fileInfoAsync(url: ?string, name: string): Promise<ImageData> {
   if (!url) {
-    console.error('expo-asset-utils: fileInfoAsync(): cannot load from empty url!');
+    throw new Error('expo-asset-utils: fileInfoAsync(): cannot load from empty url!');
     return null;
   }
   name = name || filenameFromUri(url);
+
+  if (Platform.OS === 'web') {
+    return { uri: url, name, hash: null };
+  }
+
   const localUri = FileSystem.cacheDirectory + name;
 
   if (isAssetLibraryUri(url)) {
