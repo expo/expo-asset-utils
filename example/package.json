@@ -11,7 +11,7 @@
     "expo-asset-utils": "file:../expo-asset-utils-v1.0.0.tgz",
     "immutable": "^4.0.0-rc.12",
     "jasmine-core": "^3.3.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.19",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz"
   },
