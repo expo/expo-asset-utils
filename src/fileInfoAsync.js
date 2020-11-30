@@ -4,7 +4,9 @@ import { Platform } from '@unimodules/core';
 import filenameFromUri from './filenameFromUri';
 
 function isAssetLibraryUri(uri: string): boolean {
-  return uri.toLowerCase().startsWith('assets-library://');
+  return (
+    uri.toLowerCase().startsWith('assets-library://') || uri.toLowerCase().startsWith('asset:/')
+  );
 }
 
 function isLocalUri(uri: string): boolean {
