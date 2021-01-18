@@ -18,9 +18,8 @@ export async function base64forImageUriAsync(
   };
 }> {
   const asset = await resolveAsync(file);
-  const url = asset.localUri || asset.uri;
-  const size = await getSizeAsync(url);
-  const data = await readAsStringAsync(url, {
+  const size = await getSizeAsync(asset.localUri!);
+  const data = await readAsStringAsync(asset.localUri!, {
     encoding: EncodingType.Base64,
   });
   return { data, size };
