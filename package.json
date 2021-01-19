@@ -36,10 +36,10 @@
     "lib": "src"
   },
   "peerDependencies": {
-    "expo-asset": "^8",
-    "expo-file-system": "^9",
-    "expo-font": "^8",
-    "@unimodules/core": "^7",
+    "expo-asset": "*",
+    "expo-file-system": "*",
+    "expo-font": "*",
+    "@unimodules/core": "*",
     "react-native": "*"
   },
   "devDependencies": {
