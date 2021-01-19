@@ -1,7 +1,9 @@
 {
-  "printWidth": 100,
-  "tabWidth": 2,
   "singleQuote": true,
-  "jsxBracketSameLine": true,
-  "trailingComma": "es5"
+  "trailingComma": "es5",
+  "overrides": [{ "files": "*.ts", "options": { "parser": "typescript" } }],
+  "semi": true,
+  "jsxSingleQuote": false,
+  "useTabs": false,
+  "tabWidth": 2
 }

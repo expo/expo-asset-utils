@@ -1,23 +1,15 @@
 {
-  "name": "expo-asset-utils-example",
-  "version": "32.0.0",
-  "description": "expo-asset-utils simple example",
-  "author": "support@expo.io",
-  "private": true,
-  "main": "node_modules/expo/AppEntry.js",
   "dependencies": {
-    "async-retry": "^1.1.4",
-    "expo": "^32.0.0",
-    "expo-asset-utils": "file:../expo-asset-utils-v1.0.0.tgz",
-    "immutable": "^4.0.0-rc.12",
-    "jasmine-core": "^3.3.0",
-    "lodash": "^4.17.19",
-    "react": "16.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz"
+    "expo": "^40.0.0",
+    "react": "16.11.0",
+    "react-dom": "16.11.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.0.tar.gz",
+    "react-native-web": "0.12"
   },
   "devDependencies": {
-    "eslint": "^5.9.0",
-    "eslint-config-universe": "^1.0.6",
-    "prettier": "^1.7.4"
+    "@babel/core": "7.0.0",
+    "@types/react": "^16.8.23",
+    "@types/react-native": "^0.57.65",
+    "typescript": "^3.4.5"
   }
 }

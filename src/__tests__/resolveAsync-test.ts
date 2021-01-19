@@ -1,4 +1,4 @@
-import * as AssetUtils from '../src';
+import * as AssetUtils from '../';
 
 describe('AssetUtils', () => {
   it('imports correctly', () => {
